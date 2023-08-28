@@ -9,16 +9,31 @@ import { useEffect } from "react";
 
 const Router = () => {
     const [items, setItems] = useState();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
     
     const fetchData = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products/category/men's%20clothing/`);
-      let json = await response.json();
-      let list = json.map(item => { 
-        return ({id: item.id, title: item.title, price: item.price, description: item.description, image: item.image, quantity: 0})
-      })
-      setItems(list);
+      try {
+        const response = await fetch(`https://fakestoreapi.com/products/category/men's%20clothing/`);
+        if(!response.status >= 400) {
+          throw new Error(
+            'This is a server error'
+          );
+        }
+        let json = await response.json();
+        let list = json.map(item => { 
+          return ({id: item.id, title: item.title, price: item.price, description: item.description, image: item.image, quantity: 0})
+        })
+        setItems(list);
+        setError(null);
+      } catch(err) {
+        setError(err.message);
+        setItems(null);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchData();
   }, []);
@@ -26,17 +41,14 @@ const Router = () => {
   const cart = items ? items.filter(item => item.quantity > 0) : null;
     
     const router = createBrowserRouter([
-    
-    
-    {
-  
-    path: "/",
-    element: <App cart={cart}/>,
-    children: [
-        { index: true, element: <Home />},
-        { path: "shopcart", element: <Shopcart items={items} cart={cart} setItems={setItems} />},
-    ]
-    }
+      {
+        path: "/",
+        element: <App cart={cart}/>,
+        children: [
+            { index: true, element: <Home />},
+            { path: "shopcart", element: <Shopcart items={items} cart={cart} setItems={setItems} loading={loading} error={error} />},
+        ]
+      }
     ]);
 
 return <RouterProvider router={router} />;

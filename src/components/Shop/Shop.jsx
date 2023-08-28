@@ -1,7 +1,7 @@
 import styles from './Shop.module.css';
 
-function Shop({items, setItems}) {
-    console.log(items);
+function Shop({items, setItems, loading, error}) {
+  
     function decrease(e) {
         const newItems = items.map(item=>{
             if(item.id === parseInt(e.target.dataset.id)) {
@@ -46,9 +46,21 @@ function Shop({items, setItems}) {
         
     }
     
+    if(error) {
+        return (
+            <p>{error}</p>
+        )
+    }
+
+    if(loading) {
+        return (
+        <p> Loading... Please Wait </p>
+        )
+    }
+
     return (
         <div className={styles.cards}>
-            {items? items.map(item => 
+            {items.map(item => 
                 <div className={styles.card} key={item.id}>
                     <div className={styles.imageDiv}>
                         <img src={item.image} className={styles.image} alt="" />
@@ -67,7 +79,7 @@ function Shop({items, setItems}) {
                         </div>
                     </div>
                 </div>
-            ) : <p> Loading... Please Wait </p>}       
+            )}      
         </div>
     )
 
