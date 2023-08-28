@@ -1,0 +1,6 @@
+.shopcart {
+    display:grid;
+    grid-template-columns: 75% 25%;
+    flex: 1;
+}
+

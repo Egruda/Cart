@@ -1,0 +1,100 @@
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 30px;
+    margin: 0px;
+    border-right: 6px solid black;
+    gap: 20px;
+    font-family: sans-serif;
+
+}
+
+.card {
+    
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 5px;
+    
+    
+}
+
+.image {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.buttons {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonminus {
+    border-radius: 9999em 0 0 9999em;
+    padding: 4px 10px;
+    background-color: black;
+    border: solid 1px black;
+    color: white;
+    height: 27px;
+    box-sizing: border-box;
+    
+}
+
+.buttonadd {
+    composes: buttonminus;
+    border-radius: 0 9999em 9999em 0;
+    
+    
+}
+
+.input {
+    width: 3ch;
+    font-size: 1.2rem;
+    height: 27px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.title {
+    
+    padding: 0px 30px;
+
+}
+
+.price {
+    compose: title;
+    margin: 0;
+}
+
+.priceButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.imageDiv {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.titleDiv {
+    flex: 1;
+}

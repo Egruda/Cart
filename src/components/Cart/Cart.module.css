@@ -1,0 +1,35 @@
+.list {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    
+}
+
+.title {
+    flex: 1;
+}
+
+.cart {
+    padding: 10px 20px;
+    font-family: sans-serif;
+}
+
+
+.total {
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+}
+
+.checkout {
+    border-radius: 8px;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 1.3rem;
+    padding: 5px 20px;
+}
+
+.buttonDiv {
+    padding: 20px 0;
+    text-align: end;
+}

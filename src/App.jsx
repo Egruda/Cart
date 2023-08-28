@@ -1,18 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home'
 import Sale from './components/Sale/Sale'
+import { Outlet } from "react-router-dom";
 
 
-function App() {
-  const [items, setitems] = useState([]);
+function App({cart}) {
+  
 
   return (
     <>
-       <Navbar />
+       <Navbar cart={cart}/>
        <Sale />
-       <Home />
+       <Outlet />
     </>
   )
 }

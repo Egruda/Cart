@@ -4,6 +4,9 @@
     display:flex;
     justify-content: center;
     font-size: 1.1rem;
-    padding: 0px 75px;
-    
+    padding: 6px 75px;
+}
+
+.p {
+    margin: 0px;
 }
